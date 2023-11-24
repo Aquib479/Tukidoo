@@ -1,0 +1,17 @@
+.button {
+    font-size: 1.2rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(194, 211, 218, 0.383);
+    color: grey;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: rgba(0, 128, 122, 0.786);
+    color: white;
+}

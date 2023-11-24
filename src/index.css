@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active {
+  color: black;
+}
+
+.not-active {
+  color: grey;
+}
+
+.page {
+  padding-left: 70px;
+}
+
+.study-component {
+  height: 530px;
+}
