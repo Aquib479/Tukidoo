@@ -16,7 +16,13 @@ import DocCam from '../../teacher-student-pages/docsCam/DocsCam'
 
 
 const Home = () => {
-    const [TopNavActive, setTopNavActive] = useState('classroom');
+    const [TopNavActive, setTopNavActive] = useState('videos');
+
+    // handle onclick event functions
+    const handleClick = (value) => {
+        console.log(value);
+        setTopNavActive(value);
+    }
 
     return (
         <>
@@ -39,21 +45,19 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="TopNavigation">
-                        <TopNavigation TopNavActive={TopNavActive} setTopNavActive={setTopNavActive} />
+                        <TopNavigation TopNavActive={TopNavActive} handleClick={handleClick} />
                     </div>
                     <div className="LivePage">
                         {/*  */}
                         <Person />
                         <div className="top-navigation-item">
                             {/* teacher student interaction pages */}
-                            <Routes>
-                                <Route path='/classroom' element={<Classroom />} />
-                                <Route path='/whiteboard' element={<WhiteBoard />} />
-                                <Route path='/videos' element={<Videos />} />
-                                <Route path='/slideshow' element={<SlideShow />} />
-                                <Route path='/document' element={<Document />} />
-                                <Route path='/doc' element={<DocCam />} />
-                            </Routes>
+                            {TopNavActive === 'classroom' && <Classroom />}
+                            {TopNavActive === 'whiteboard' && <WhiteBoard />}
+                            {TopNavActive === 'videos' && <Videos />}
+                            {TopNavActive === 'slideshow' && <SlideShow />}
+                            {TopNavActive === 'document' && <Document />}
+                            {TopNavActive === 'doc' && <DocCam />}
                         </div>
                     </div>
                 </div>

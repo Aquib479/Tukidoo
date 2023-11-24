@@ -9,7 +9,7 @@ import { ImFilePlay } from "react-icons/im";
 import { Link } from 'react-router-dom';
 
 
-const TopNavigation = ({ TopNavActive, setTopNavActive }) => {
+const TopNavigation = ({ TopNavActive, handleClick }) => {
     const navigation_data = [
         { "id": 1, "name": "Classroom", "links": 'classroom', "icon": <SiGoogleclassroom /> },
         { "id": 2, "name": "Whiteboard", "links": 'whiteboard', "icon": <TfiBlackboard /> },
@@ -24,7 +24,7 @@ const TopNavigation = ({ TopNavActive, setTopNavActive }) => {
                 <div className="top-navigation">
                     {
                         navigation_data.map(val => {
-                            return <div key={val.id} className={`main-navigation ${TopNavActive === val.links ? 'main-navigation-active' : ''}`} onClick={() => setTopNavActive(val.links)}>
+                            return <div key={val.id} className={`main-navigation ${TopNavActive === val.links ? 'main-navigation-active' : ''}`} onClick={() => handleClick(val.links)}>
                                 <Link to={`/${val.links}`} className='navigation-icon'>{val.icon}</Link>
                                 <p className='navigation-name'>{val.name}</p>
                             </div>
