@@ -113,9 +113,8 @@ const Dashboard = ({ setActive, isActive }) => {
                                                     type="radio"
                                                     name="radioGroup"
                                                     id="radio1"
-                                                    checked={val.charge_customers ? true : false}
-                                                    disabled={val.charge_customers ? true : false}
-                                                    readOnly
+                                                    value={true}
+                                                    defaultChecked={val.charge_customers ? true : false}
                                                 />
                                                 <label htmlFor="radio1">Yes</label>
                                             </div>
@@ -124,9 +123,8 @@ const Dashboard = ({ setActive, isActive }) => {
                                                     type="radio"
                                                     name="radioGroup"
                                                     id="radio2"
-                                                    checked={val.charge_customers ? false : true}
-                                                    disabled={val.charge_customers ? true : false}
-                                                    readOnly
+                                                    value={false}
+                                                    defaultChecked={val.charge_customers ? false : true}
                                                 />
                                                 <label htmlFor="radio2">No</label>
                                             </div>
@@ -187,13 +185,13 @@ const Dashboard = ({ setActive, isActive }) => {
                                     </div>
                                 </div>
                                 <div className="bar-graph">
-                                    <Charts
+                                    {val.charge_customers && <Charts
                                         value_1={val.amount.category_6}
                                         value_2={val.amount.category_7}
                                         value_3={val.amount.category_8}
                                         value_4={val.amount.category_9}
                                         value_5={val.amount.category_10}
-                                    />
+                                    />}
                                 </div>
                                 <div className="button-main">
                                     <button
