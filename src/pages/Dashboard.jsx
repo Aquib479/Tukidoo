@@ -1,25 +1,37 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useReducer } from 'react';
 import '../css/dashboard.css';
 import Charts from '../components/Charts';
 
+// Reducer function
+const formReducer = (state, action) => {
+    switch (action.type) {
+        case 'CHANGE':
+            return {
+                ...state,
+                [action.field]: action.value,
+            };
+        default:
+            return state;
+    }
+};
+
 const Dashboard = ({ setActive, isActive }) => {
     const [data, setData] = useState([]);
-    const [InputData, setInputData] = useState({
-        "category_6": "",
-        "category_7": "",
-        "category_8": "",
-        "category_9": "",
-        "category_10": ""
-    });
-
-    // handle the input changes
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInputData({
-            ...InputData,
-            [name]: value,
+    const initialState = {
+        category_6: 99,
+        category_7: 79,
+        category_8: 59,
+        category_9: 39,
+        category_10: 19
+    };
+    const [state, dispatch] = useReducer(formReducer, initialState);
+    const handleChange = (field, value) => {
+        dispatch({
+            type: 'CHANGE',
+            field,
+            value,
         });
-    }
+    };
 
     // handle the form submit
     const handleSubmit = async (e) => {
@@ -27,11 +39,11 @@ const Dashboard = ({ setActive, isActive }) => {
 
         const FormData = {
             "amount": {
-                "category_6": InputData.category_6,
-                "category_7": InputData.category_7,
-                "category_8": InputData.category_8,
-                "category_9": InputData.category_9,
-                "category_10": InputData.category_10
+                "category_6": state.category_6,
+                "category_7": state.category_7,
+                "category_8": state.category_8,
+                "category_9": state.category_9,
+                "category_10": state.category_10
             }
         }
 
@@ -126,7 +138,8 @@ const Dashboard = ({ setActive, isActive }) => {
                                                 defaultValue={val.amount.category_6}
                                                 type='number'
                                                 disabled={val.charge_customers === true ? false : true}
-                                                onChange={handleChange}
+                                                // onChange={handleChange}
+                                                onChange={(e) => handleChange('category_6', e.target.value)}
                                             />
                                         </div>
                                         <div className="input-boxes">
@@ -135,8 +148,9 @@ const Dashboard = ({ setActive, isActive }) => {
                                                 name='category_7'
                                                 defaultValue={val.amount.category_7}
                                                 className={`${val.charge_customers ? 'input bg-input-true input-text-center' : 'input input-text-center bg-input-false'}`}
-                                                onChange={handleChange}
                                                 disabled={val.charge_customers === true ? false : true}
+                                                // onChange={handleChange}
+                                                onChange={(e) => handleChange('category_7', e.target.value)}
 
                                             />
                                             <input
@@ -144,8 +158,9 @@ const Dashboard = ({ setActive, isActive }) => {
                                                 name='category_8'
                                                 defaultValue={val.amount.category_8}
                                                 className={`${val.charge_customers ? 'input bg-input-true input-text-center' : 'input input-text-center bg-input-false'}`}
-                                                onChange={handleChange}
                                                 disabled={val.charge_customers === true ? false : true}
+                                                // onChange={handleChange}
+                                                onChange={(e) => handleChange('category_8', e.target.value)}
 
                                             />
                                             <input
@@ -153,8 +168,9 @@ const Dashboard = ({ setActive, isActive }) => {
                                                 name='category_9'
                                                 defaultValue={val.amount.category_9}
                                                 className={`${val.charge_customers ? 'input bg-input-true input-text-center' : 'input input-text-center bg-input-false'}`}
-                                                onChange={handleChange}
                                                 disabled={val.charge_customers === true ? false : true}
+                                                // onChange={handleChange}
+                                                onChange={(e) => handleChange('category_9', e.target.value)}
 
                                             />
                                             <input
@@ -162,8 +178,9 @@ const Dashboard = ({ setActive, isActive }) => {
                                                 name='category_10'
                                                 defaultValue={val.amount.category_10}
                                                 className={`${val.charge_customers ? 'input bg-input-true input-text-center' : 'input input-text-center bg-input-false'}`}
-                                                onChange={handleChange}
                                                 disabled={val.charge_customers === true ? false : true}
+                                                // onChange={handleChange}
+                                                onChange={(e) => handleChange('category_10', e.target.value)}
 
                                             />
                                         </div>
@@ -184,20 +201,20 @@ const Dashboard = ({ setActive, isActive }) => {
                                         className={`${isActive
                                             ? 'button active button-true'
                                             : val.charge_customers &&
-                                                val.amount.category_6 >= 99 &&
-                                                val.amount.category_7 >= 79 &&
-                                                val.amount.category_8 >= 59 &&
-                                                val.amount.category_9 >= 39 &&
-                                                val.amount.category_10 >= 19
+                                                state.category_6 >= 99 &&
+                                                state.category_7 >= 79 &&
+                                                state.category_8 >= 59 &&
+                                                state.category_9 >= 39 &&
+                                                state.category_10 >= 19
                                                 ? 'button button-true'
                                                 : 'button button-false'}`}
                                         disabled={
                                             val.charge_customers &&
-                                                val.amount.category_6 >= 99 &&
-                                                val.amount.category_7 >= 79 &&
-                                                val.amount.category_8 >= 59 &&
-                                                val.amount.category_9 >= 39 &&
-                                                val.amount.category_10 >= 19 ? false : true
+                                                state.category_6 >= 99 &&
+                                                state.category_7 >= 79 &&
+                                                state.category_8 >= 59 &&
+                                                state.category_9 >= 39 &&
+                                                state.category_10 >= 19 ? false : true
                                         }
                                     >Save</button>
                                 </div>

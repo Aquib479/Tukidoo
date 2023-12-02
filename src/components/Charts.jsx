@@ -19,7 +19,7 @@ ChartJS.register(
     Legend
 );
 
-const Charts = ({ value_1, value_2, value_3, value_4, value_5 }) => {
+const Charts = ({ value_1, value_2, value_3, value_4, value_5, chart_data }) => {
     const options = {
         scales: {
             x: {
