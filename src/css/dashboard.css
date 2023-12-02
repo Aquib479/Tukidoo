@@ -1,0 +1,76 @@
+.user-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+
+.text-3 {
+    padding-top: 1rem;
+}
+
+.input-1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.input-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1.8rem;
+}
+
+.radio-buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.custom-radio {
+    display: flex;
+    align-items: center;
+}
+
+.custom-radio input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    cursor: pointer;
+}
+
+.custom-radio input:checked {
+    background-color: #6741D9;
+}
+
+.custom-radio-false input:checked {
+    background-color: #C2C2C2;
+}
+
+label {
+    font-size: 16px;
+    padding: 0 12px;
+}
+
+.input-box {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.input-boxes {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

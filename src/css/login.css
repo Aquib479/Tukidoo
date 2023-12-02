@@ -1,0 +1,34 @@
+.form-container {
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headings {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.input-field {
+    padding: 0.8rem 0;
+    position: relative;
+}
+
+.eye {
+    position: absolute;
+    top: 30%;
+    left: 93%;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.registration {
+    text-align: center;
+    padding: 1rem 0;
+    cursor: pointer;
+}
+
+
+/* css for the dashboard */

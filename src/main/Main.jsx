@@ -1,29 +1,17 @@
-import React from 'react';
-import './main.css'
-import Sidebar from '../component/sidebar/Sidebar';
-import Home from '../pages/home/Home';
-import Notification from '../pages/notification/Notification'
-import Timer from '../pages/timer/Timer'
-import Calendar from '../pages/calendarShedule/Calendar'
-import LookUp from '../pages/lookup/LookUp'
-import User from '../pages/users/Users'
-import Datas from '../pages/datas/Datas'
-
-import { Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Login from '../pages/Login'
+import Dashboard from '../pages/Dashboard'
 
 const Main = () => {
+    const [isActive, setActive] = useState(false);
+
     return (
         <>
-            <div className="main-component">
-                <Sidebar />
+            <div className="main">
                 <Routes>
-                    <Route path='*' element={<Home />} />
-                    <Route path='/notification' element={<Notification />} />
-                    <Route path='/timer' element={<Timer />} />
-                    <Route path='/schedule' element={<Calendar />} />
-                    <Route path='/lookup' element={<LookUp />} />
-                    <Route path='/users' element={<User />} />
-                    <Route path='/datas' element={<Datas />} />
+                    <Route path='/' element={<Login isActive={isActive} setActive={setActive} />} />
+                    <Route path='/dashboard' element={<Dashboard isActive={isActive} setActive={setActive} />} />
                 </Routes>
             </div>
         </>
